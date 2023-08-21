@@ -31,8 +31,6 @@ const Tournaments = ({ tournaments, TrnId, setSelectedTournament }: Props) => {
 		return formattedTime;
 	};
 
-	console.log(data?.Matches);
-
 	if (isLoading) {
 		return <p>Loading...</p>;
 	}
@@ -40,7 +38,6 @@ const Tournaments = ({ tournaments, TrnId, setSelectedTournament }: Props) => {
 	if (error) {
 		return <p>Error: {error.message}</p>;
 	}
-	console.log(data?.Matches?.at(0));
 	return (
 		<>
 			<div className="absolute left-[188px] top-3 flex gap-3">
@@ -77,7 +74,6 @@ const Tournaments = ({ tournaments, TrnId, setSelectedTournament }: Props) => {
 								<div className="flex gap-4">
 									{Object.values(match.Markets).map(
 										(item: any, index: number) => {
-											console.log(item);
 											return (
 												<div className="flex gap-1">
 													<p

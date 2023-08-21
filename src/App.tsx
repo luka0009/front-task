@@ -17,8 +17,6 @@ function App() {
 	const [selectedCountry, setSelectedCountry] = useState<any>("England");
 	const [selectedTournament, setSelectedTournament] = useState(selectedCountry);
 
-	console.log(sportsData.sports);
-
 	if (sportsData.loading) {
 		return <div>Loading...</div>;
 	}
