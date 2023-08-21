@@ -9,16 +9,16 @@ import Countries from "./components/Countries";
 import Tournaments from "./components/Tournaments";
 
 function App() {
-	const [selectedSport, setSelectedSport] = useState("Football");
-	const [selectedCountry, setSelectedCountry] = useState("England");
-	const [selectedTournament, setSelectedTournament] = useState(0);
-
-	const sportsData = useAppSelector((state) => state.sport);
-
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(fetchSportsData());
 	}, [dispatch]);
+
+	const sportsData = useAppSelector((state) => state.sport);
+	console.log("sportsData", sportsData?.sports);
+	const [selectedSport, setSelectedSport] = useState<any>("Football");
+	const [selectedCountry, setSelectedCountry] = useState<any>("England");
+	const [selectedTournament, setSelectedTournament] = useState(selectedCountry);
 
 	console.log(sportsData.sports);
 
@@ -42,22 +42,26 @@ function App() {
 	const tournaments = matchedCountry?.Trn;
 
 	console.log("tournaments", matchedCountry?.Trn);
-	const tournament = matchedCountry?.Trn?.at(0)
+	const tournament = matchedCountry?.Trn?.at(0);
+	console.log("selected", selectedSport);
 
 	return (
 		<>
-			<SportsList
-				sports={sportsData?.sports}
-				setSelectedSport={setSelectedSport}
-			/>
 			<Countries
 				countries={countries}
 				setSelectedCountry={setSelectedCountry}
+				tournaments={tournaments}
+				setSelectedTournament={setSelectedTournament}
 			/>
 			<Tournaments
 				tournaments={tournaments}
 				TrnId={tournament?.Id}
 				setSelectedTournament={setSelectedTournament}
+			/>
+			<SportsList
+				sports={sportsData?.sports}
+				setSelectedSport={setSelectedSport}
+				selectedSport={selectedSport}
 			/>
 			<Routes>
 				<Route path="/" element={<Home />} />
