@@ -1,6 +1,3 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Sport from "./pages/Sport";
 import SportsList from "./components/SportsList";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { useEffect, useState } from "react";
@@ -40,10 +37,7 @@ function App() {
 	);
 
 	const tournaments = matchedCountry?.Trn;
-
-	console.log("tournaments", matchedCountry?.Trn);
 	const tournament = matchedCountry?.Trn?.at(0);
-	console.log("selected", selectedSport);
 
 	return (
 		<>
@@ -52,6 +46,7 @@ function App() {
 				setSelectedCountry={setSelectedCountry}
 				tournaments={tournaments}
 				setSelectedTournament={setSelectedTournament}
+				selectedCountry={selectedCountry}
 			/>
 			<Tournaments
 				tournaments={tournaments}
@@ -63,10 +58,6 @@ function App() {
 				setSelectedSport={setSelectedSport}
 				selectedSport={selectedSport}
 			/>
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/:sport" element={<Sport />} />
-			</Routes>
 		</>
 	);
 }

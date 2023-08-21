@@ -5,11 +5,12 @@ const Countries = ({
 	setSelectedCountry,
 	tournaments,
 	setSelectedTournament,
+	selectedCountry,
 }: any) => {
 	const [show, setShow] = useState(false);
 	return (
 		<>
-			<div className="flex flex-col bg-black">
+			<div className="flex flex-col bg-black h-screen">
 				<h1 className="text-green-400">Countries</h1>
 				<div className="p-3 max-h-screen overflow-y-auto mr-10 w-[180px] bg-black text-white">
 					{countries?.map((country: any, index: number) => (
@@ -25,7 +26,7 @@ const Countries = ({
 								<span>{country.N}</span>
 								<span>{show ? "<" : ">"}</span>
 							</div>
-							{show && (
+							{show && country?.N === selectedCountry && (
 								<div>
 									{tournaments?.map((tournament: any, index: number) => (
 										<span

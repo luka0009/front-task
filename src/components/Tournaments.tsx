@@ -32,16 +32,6 @@ const Tournaments = ({ tournaments, TrnId, setSelectedTournament }: Props) => {
 	};
 
 	console.log(data?.Matches);
-	// console.log(Object.values(data?.Matches?.at(0)?.Markets)[0]);
-
-	// data?.Matches?.forEach((array: any) => {
-	// 	Object.keys(array?.Markets).forEach((key: string) => {
-	// 		const marketArray = array?.Markets[key];
-	// 		marketArray.forEach((item: any, index: number) => {
-	// 			console.log('odds', index, item);
-	// 		});
-	// 	});
-	// });
 
 	if (isLoading) {
 		return <p>Loading...</p>;
@@ -53,8 +43,8 @@ const Tournaments = ({ tournaments, TrnId, setSelectedTournament }: Props) => {
 	console.log(data?.Matches?.at(0));
 	return (
 		<>
-			<div className="absolute left-[250px] top-3 flex gap-3">
-				<select>
+			<div className="absolute left-[188px] top-3 flex gap-3">
+				<select className="bg-[#272727] text-white">
 					{tournaments?.map((tournament: any, index: number) => (
 						<option
 							key={tournament?.Id}
@@ -67,7 +57,7 @@ const Tournaments = ({ tournaments, TrnId, setSelectedTournament }: Props) => {
 				</select>
 			</div>
 
-			<div className="absolute text-sm left-[188px] top-20 max-h-screen overflow-y-auto z-8 text-white">
+			<div className="absolute text-sm left-[188px] top-20 h-screen overflow-y-auto z-8 text-white">
 				<div className="grid grid-cols- gap-x-16">
 					{data?.Matches?.map((match: any, index: number) => (
 						<div
